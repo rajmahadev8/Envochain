@@ -167,7 +167,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: TextButton(
                     onPressed: _checkdetails,
                     style: TextButton.styleFrom(
-                      backgroundColor: Colors.amber,
+                      backgroundColor: Theme.of(context).primaryColor,
                     ),
                     child: isLoading
                         ? const CircularProgressIndicator(

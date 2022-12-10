@@ -7,13 +7,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:envochain/util/utility.dart';
 
 class AuthProvider with ChangeNotifier {
-  AuthModel authUser = AuthModel();
-  var isTokenset;
-  final String URL = 'https://Envochain.harrykanani.repl.co';
+  static AuthModel authUser = AuthModel();
 
   Future<dynamic> authenticate(String mobile, bool isRegister,
       {String username = ''}) async {
-    final response = await http.post(Uri.parse('${URL}/auth/register'),
+    final response = await http.post(Uri.parse('${Utility.URL}/auth/register'),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode({
           "mobileNumber": mobile,
@@ -34,7 +32,8 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<String> verifyOTP(String otp) async {
-    final response = await http.post(Uri.parse('${URL}/auth/otp/verify'),
+    final response = await http.post(
+        Uri.parse('${Utility.URL}/auth/otp/verify'),
         headers: {"Content-Type": "application/json"},
         body: json.encode({
           "mobileNumber": authUser.getMobileNo,
@@ -52,12 +51,17 @@ class AuthProvider with ChangeNotifier {
     if (extracteddata['message'].toString().trim() ==
         'OTP verified successfully') {
       final prefMap = Map.from(extracteddata['data']);
-      prefMap.remove('user_id');
-
+      // print(prefMap);
+      print(extracteddata);
       SharedPreferences prefs = await SharedPreferences.getInstance();
-
       prefs.setString("user", json.encode(prefMap));
-      print(prefMap);
+      authUser.setMobileNo = prefMap['mobileNumber'].toString();
+      authUser.setToken = prefMap['token'];
+      authUser.setname = prefMap['username'];
+      authUser.setuserid = prefMap['user_id'];
+      authUser.setprofilePIC = prefMap['profile_pic'];
+      // print(authUser.getMobileNo + authUser.getname);
+      // print("USERID" + authUser.getuserID);
       return "Success";
     }
     return "Fail";
@@ -73,11 +77,23 @@ class AuthProvider with ChangeNotifier {
       authUser.setMobileNo = userData['mobileNumber'].toString();
       authUser.setToken = userData['token'];
       authUser.setname = userData['username'];
-      print(authUser.getMobileNo + authUser.getname);
+      authUser.setuserid = userData['user_id'];
+      authUser.setprofilePIC = userData['profile_pic'];
+      // print(
+      //     "Number"+authUser.getMobileNo + authUser.getname + authUser.getuserID);
       return true;
     } catch (e) {
       print(e);
       return false;
     }
+  }
+
+  Future<void> Logout() async {
+    final r = await http.post(Uri.parse('${Utility.URL}/auth/logout'),
+        headers: {"Content-Type": "application/json"},
+        body: json.encode({"token": authUser.gettoken}));
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    await preferences.clear();
+    print(r.body);
   }
 }

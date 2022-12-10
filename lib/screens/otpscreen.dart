@@ -121,7 +121,7 @@ class _OTPscreenState extends State<OTPscreen> {
                     onPressed: checkOTP,
                     autofocus: false,
                     style: TextButton.styleFrom(
-                      backgroundColor: Colors.amber,
+                      backgroundColor: Theme.of(context).primaryColor,
                     ),
                     child: isLoading
                         ? const CircularProgressIndicator(

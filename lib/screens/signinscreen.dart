@@ -141,7 +141,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   child: TextButton(
                     onPressed: () => _checkphone(context),
                     style: TextButton.styleFrom(
-                      backgroundColor: Colors.amber,
+                      backgroundColor: Theme.of(context).primaryColor,
                     ),
                     child: isLoading
                         ? Container(
