@@ -1,3 +1,4 @@
+import 'package:envochain/screens/walletconnector.dart';
 import 'package:flutter/material.dart';
 import 'package:envochain/provider/feedaddprovider.dart';
 import 'package:envochain/provider/feedprovider.dart';
@@ -81,7 +82,8 @@ class MyApp extends StatelessWidget {
               ChatScreen.routeName: (context) => ChatScreen(),
               FeedAddScreen.routeName: (context) => FeedAddScreen(),
               ProfileScreen.routeName: (context) => ProfileScreen(),
-              NavbarScreen.routeName: (context) => NavbarScreen()
+              NavbarScreen.routeName: (context) => NavbarScreen(),
+              WalletConnector.routeName:(context)=>WalletConnector(),
             },
           ),
         ));

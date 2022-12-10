@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:envochain/screens/walletconnector.dart';
 import 'package:flutter/material.dart';
 import 'package:envochain/models/feedmodel.dart';
 import 'package:envochain/screens/profilescreen.dart';
@@ -25,11 +26,12 @@ class FeedWidget extends StatelessWidget {
                 )),
             child: CircleAvatar(
               radius: 25,
+              backgroundColor: Color.fromARGB(255, 181, 219, 136),
               child: CachedNetworkImage(
                 imageUrl: feeddata.getProfileImage,
                 placeholder: (context, url) => Center(
                   child: CircularProgressIndicator(
-                    color: Theme.of(context).primaryColor,
+                    color: Color.fromARGB(255, 181, 219, 136),
                   ),
                 ),
               ),
@@ -77,7 +79,21 @@ class FeedWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                )
+                ),
+                const SizedBox(
+                  height: 1,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context, rootNavigator: true)
+                          .pushNamed(WalletConnector.routeName);
+                    },
+                    clipBehavior: Clip.hardEdge,
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                    child: const Text('Donate 🪙',
+                        style: TextStyle(fontSize: 14))),
               ]),
         ),
       ),

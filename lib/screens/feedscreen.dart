@@ -26,6 +26,7 @@ class FeedScreen extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.all(8),
           child: CircleAvatar(
+              backgroundColor: Color.fromARGB(255, 181, 219, 136),
               backgroundImage:
                   NetworkImage(AuthProvider.authUser.getProfilePIC)),
         ),

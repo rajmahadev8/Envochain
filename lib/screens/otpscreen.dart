@@ -1,3 +1,4 @@
+import 'package:envochain/screens/navbarscreen.dart';
 import 'package:http/http.dart';
 import 'package:envochain/provider/authprovider.dart';
 import 'package:envochain/screens/mainhomescreen.dart';
@@ -35,7 +36,8 @@ class _OTPscreenState extends State<OTPscreen> {
         });
         print(response);
         if (response == "Success") {
-          Navigator.of(context).pushReplacementNamed(MainHomeScreen.routeName);
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              NavbarScreen.routeName, (Route<dynamic> route) => false);
         } else {
           Utility.showSnackbar(context, 'Invalid otp');
         }

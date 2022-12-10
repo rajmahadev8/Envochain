@@ -85,10 +85,9 @@ class ProfileScreen extends StatelessWidget {
                     Provider.of<AuthProvider>(context, listen: false)
                         .Logout()
                         .then((_) {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage()),
-                          (route) => false);
+                      Navigator.of(context, rootNavigator: true)
+                          .pushReplacement(MaterialPageRoute(
+                              builder: (context) => HomePage()));
                     });
                   },
                   itemBuilder: (BuildContext context) {
