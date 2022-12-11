@@ -31,7 +31,7 @@ module.exports = {
 			// generate random 4 digit number
 			let otp = Math.floor(1000 + Math.random() * 9000);
 
-			const welcomeMessage = `Welcome to Yog4Life! Your verification code is ${otp}`;
+			const welcomeMessage = `Welcome to Envochain! Your verification code is ${otp}`;
 
 			// send otp to mobileNumber using twillio api
 			let response = await sendSMS(mobileNumber, welcomeMessage);
