@@ -92,13 +92,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
-  cryptography:
-    dependency: transitive
-    description:
-      name: cryptography
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.5"
   csslib:
     dependency: transitive
     description:
@@ -148,13 +141,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.4"
-  fixnum:
-    dependency: transitive
-    description:
-      name: fixnum
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -228,6 +214,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web3:
+    dependency: "direct main"
+    description:
+      name: flutter_web3
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.9"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -735,20 +728,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.3"
-  walletconnect_dart:
-    dependency: "direct main"
-    description:
-      name: walletconnect_dart
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.11"
-  web_socket_channel:
-    dependency: transitive
-    description:
-      name: web_socket_channel
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.2.0"
   win32:
     dependency: transitive
     description:
