@@ -8,6 +8,8 @@ const authRouter = require("./Router/authRoutes");
 const app = express();
 
 const server = http.createServer(app);
+global.socketio = require("socket.io")(server);
+require("./socket")(socketio);
 
 let node_env = process.env.NODE_ENV || "local";
 
